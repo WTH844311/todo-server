@@ -20,10 +20,6 @@ module.exports = {
         // bucket: '',
         // accessKey: '',
         // secretKey: ''
-        // domain: 'ms.reddme.com',
-        // bucket: 'ms-todo',
-        // accessKey: 'wC1ggwXnmOjrYH_KafOUHMjNocGMw2UmkHUJrBgB',
-        // secretKey: 'L99sb4g33VADVtoC-gLqbN_0gqr0c-9PPxm8jPyT'
     },
     // 你的发件邮箱服务器配置
     email: {
@@ -32,12 +28,6 @@ module.exports = {
         // auth: {
         //     user: '', // 邮箱账号
         //     pass: ''  // 邮箱授权码
-        // }
-        // host: 'smtp.163.com',
-        // port: 465,  // 25 端口在阿里云服务器被封禁
-        // auth: {
-        //     user: 'z844311882z@163.com', // 邮箱账号
-        //     pass: 'WTH30haha'     // 邮箱授权码
         // }
     }
 }
