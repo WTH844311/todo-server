@@ -11,7 +11,6 @@ module.exports = {
         exp: 24 * 60 * 60,
         // 使用你自己的密钥，用来根据密钥生成 token
         // secretKey: 'your_own_secretKey'
-        // secretKey: 'WTH30haha',
     },
     // 文件上传用到了七牛云的对象存储服务，详情访问官网 https://developer.qiniu.com/kodo/sdk/1289/nodejs
     upload: {
