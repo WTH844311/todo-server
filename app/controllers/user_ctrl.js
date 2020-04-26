@@ -420,38 +420,42 @@ const changePassword = async (ctx, next) => {
  */
 const forgetPassword = async (ctx, next) => {
     const { email, captcha, password } = ctx.request.body
-
-    const result = await Captcha_mod.findOne({
-        email,
-        captcha
-    })
-    if (!result || Date.now() > result.exp) {
-        return ctx.body = {
-            code: 0,
-            msg: 'Invalid captcha'
-        }
-    }
-    const hash = await passport.encrypt(password, config.bcrypt.saltTimes)
-    const { nModified, n, ok } = await User_mod.updateOne({
-        email
-    }, {
-        hash,
-        password_updated_at: new Date().toISOString()
-    })
-    if (nModified > 0) {
-        Captcha_mod.deleteOne({
+    try {
+        const result = await Captcha_mod.findOne({
             email,
             captcha
         })
+        if (!result || Date.now() > result.exp) {
+            return ctx.body = {
+                code: 0,
+                msg: 'Invalid captcha'
+            }
+        }
+        const hash = await passport.encrypt(password, config.bcrypt.saltTimes)
+        const { nModified, n, ok } = await User_mod.updateOne({
+            email
+        }, {
+            hash,
+            password_updated_at: new Date().toISOString()
+        })
+        if (nModified > 0) {
+            Captcha_mod.deleteOne({
+                email,
+                captcha
+            })
+        }
+    
+        ctx.body = nModified > 0 ? {
+            code: 1,
+            msg: 'Change password successfully',
+        } : {
+            code: 0,
+            msg: 'Change password failed'
+        }
+    } catch (error) {
+        console.log(error)
     }
-
-    ctx.body = nModified > 0 ? {
-        code: 1,
-        msg: 'Change password successfully',
-    } : {
-        code: 0,
-        msg: 'Change password failed'
-    }
+    
 }
 
 module.exports = {

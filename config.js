@@ -10,23 +10,23 @@ module.exports = {
         // 生成的 token 有效时间为 24 小时
         exp: 24 * 60 * 60,
         // 使用你自己的密钥，用来根据密钥生成 token
-        // secretKey: 'your_own_secretKey'
+        secretKey: 'your_own_secretKey'
     },
     // 文件上传用到了七牛云的对象存储服务，详情访问官网 https://developer.qiniu.com/kodo/sdk/1289/nodejs
     upload: {
         // 下面的参数必须声明
-        // domain: '',
-        // bucket: '',
-        // accessKey: '',
-        // secretKey: ''
+        domain: '',
+        bucket: '',
+        accessKey: '',
+        secretKey: ''
     },
     // 你的发件邮箱服务器配置
     email: {
-        // host: '',
-        // port: 465,  // 25 端口在阿里云服务器被封禁
-        // auth: {
-        //     user: '', // 邮箱账号
-        //     pass: ''  // 邮箱授权码
-        // }
+        host: '',
+        port: 465,  // 25 端口在阿里云服务器被封禁
+        auth: {
+            user: '', // 邮箱账号
+            pass: ''  // 邮箱授权码
+        }
     }
 }

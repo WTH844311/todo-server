@@ -51,7 +51,7 @@ const onReceiveMessage = async (raw, ws) => {
 			ws.send(JSON.stringify({ type: 'pong' }))
 			break
 		case 'identity':
-			ws.id = json.data.ws_id
+			ws.id = json.data.id
 			ws.user_id = json.data.user_id
 			break
 		case 'fetch':
