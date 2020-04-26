@@ -35,6 +35,12 @@ const reminderSchema = new Schema({
     is_snoozed: Boolean,
     date: String
 })
+const commentSchema = new Schema({
+    comment: String,
+    username: String,
+    user_id: ObjectId,
+    submit_at: String
+})
 const TaskSchema = new Schema({
     title: String,
     local_id: ObjectId,
@@ -58,7 +64,8 @@ const TaskSchema = new Schema({
     note_updated_at: String,
     linkedEntities: [LinkedEntitiesSchema],
     position: Number,
-    today_position: Number
+    today_position: Number,
+    comments: [commentSchema]
 }, { collection: 'task', versionKey: false })
 
 module.exports = mongoose.model('task', TaskSchema)
